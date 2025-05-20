@@ -288,8 +288,7 @@ function fetchData(path, tableBodyId, renderRow) {
 function checkUserPosition() {
     const position = sessionStorage.getItem("position");
     if (position === "Staff") {
-        const actionButtons = [
-            "openPlanModal", "editTuitionBtn",
+        const actionButtons = ["editTuitionBtn",
             "openStaffModal", "openDiscountModal"
         ];
 
@@ -299,7 +298,6 @@ function checkUserPosition() {
         });
 
         const actionButtonSelectors = [
-           ".editPlan", ".deletePlan",
             ".editDiscount", ".deleteDiscount",
             ".deleteStaff"
         ];
@@ -1449,11 +1447,11 @@ fetchData('expenses', 'expensesTableBody', (key, expense) => {
     return `
         <td>${expense.name}</td>
         <td>
-            <button class="edit-expense ${isStaff ? 'staff-hidden' : ''}" 
+            <button class="edit-expense ${isStaff}" 
                 data-key="${key}">
                  Edit
             </button>
-            <button class="delete-expense ${isStaff ? 'staff-hidden' : ''}" 
+            <button class="delete-expense ${isStaff}" 
                 data-key="${key}">
                  Delete
             </button>
@@ -1587,14 +1585,14 @@ function fetchFilteredPlans(selectedGrade) {
                     <td>₱${plan.downPayment.toLocaleString()}</td>
                     <td>₱${plan.monthlyPayment.toLocaleString()}</td>
                     <td>
-                        <button class="editPlan ${isStaff ? 'staff-hidden' : ''}" 
+                        <button class="editPlan ${isStaff}" 
                             data-key="${plan.key}" 
                             data-name="${plan.name}" 
                             data-downpayment="${plan.downPayment}" 
                             data-monthlypayment="${plan.monthlyPayment}">
                             ✎ Edit
                         </button>
-                        <button class="deletePlan ${isStaff ? 'staff-hidden' : ''}" 
+                        <button class="deletePlan ${isStaff}" 
                             data-key="${plan.key}">
                             Remove
                         </button>
